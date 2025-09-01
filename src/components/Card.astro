@@ -1,0 +1,55 @@
+---
+const { img, title, desc, info, index, activeIndex } = Astro.props;
+---
+
+<div
+  class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-6 card flex flex-col items-center cursor-pointer relative"
+  data-card-index={index}
+>
+  <img
+    src={img.startsWith("/") ? img : `/${img}`}
+    alt={title}
+    class="w-20 h-20 mb-4"
+  />
+  <h3 class="text-xl font-semibold text-center mb-3">{title}</h3>
+  <p class="text-gray-600 text-center">{desc}</p>
+  <button
+    class="mt-2 text-emerald-700 font-semibold underline focus:outline-none"
+    onclick={`window.handleCardClick(${index})`}
+  >
+    {activeIndex === index ? "Cerrar" : "Ver más"}
+  </button>
+  {
+    activeIndex === index && (
+      <div class="mt-4 p-4 bg-gray-100 rounded-xl text-gray-700 text-sm transition-all duration-300 ease-in-out animate-fade-in">
+        {info}
+      </div>
+    )
+  }
+</div>
+
+<script is:inline>
+  if (!window.cardActiveIndex) window.cardActiveIndex = null;
+  window.handleCardClick = function (idx) {
+    window.cardActiveIndex = window.cardActiveIndex === idx ? null : idx;
+    document.querySelectorAll("[data-card-index]").forEach((el) => {
+      const cardIdx = Number(el.getAttribute("data-card-index"));
+      const infoDiv = el.querySelector(".mt-4");
+      const btn = el.querySelector("button");
+      if (cardIdx === window.cardActiveIndex) {
+        if (!infoDiv) {
+          const info = el.getAttribute("data-info");
+          const div = document.createElement("div");
+          div.className =
+            "mt-4 p-4 bg-gray-100 rounded-xl text-gray-700 text-sm transition-all duration-300 ease-in-out animate-fade-in";
+          div.textContent = info;
+          el.appendChild(div);
+        }
+        btn.textContent = "Cerrar";
+      } else {
+        infoDiv?.remove();
+        btn.textContent = "Ver más";
+      }
+    });
+  };
+</script>

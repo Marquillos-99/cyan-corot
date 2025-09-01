@@ -1,0 +1,73 @@
+---
+import Solucion from "./Solucion.astro";
+
+const soluciones = [
+  {
+    img: "agua.png",
+    title: "Agua",
+    description: "Protección y gestión responsable del agua para todos.",
+    extraContent: `<h5>Agua</h5><p>Protección y gestión responsable del agua para todos.</p>`,
+  },
+  {
+    img: "calidad_del_aire.png",
+    title: "Calidad del Aire",
+    description: "Mejorando el aire que respiramos en ciudades y comunidades.",
+    extraContent: `<h5>Calidad del Aire</h5><p>Mejorando el aire que respiramos en ciudades y comunidades.</p>`,
+  },
+  {
+    img: "cultura.png",
+    title: "Cultura",
+    description: "Promoviendo la educación y cultura ambiental.",
+    extraContent: `<h5>Cultura</h5><p>Promoviendo la educación y cultura ambiental.</p>`,
+  },
+  {
+    img: "Energia.png",
+    title: "Energía",
+    description: "Impulsando energías limpias y renovables.",
+    extraContent: `<h5>Energía</h5><p>Impulsando energías limpias y renovables.</p>`,
+  },
+  {
+    img: "inclusion.png",
+    title: "Inclusión",
+    description: "Garantizando participación y equidad para todos.",
+    extraContent: `<h5>Inclusión</h5><p>Garantizando participación y equidad para todos.</p>`,
+  },
+  {
+    img: "Movilidad.png",
+    title: "Movilidad",
+    description: "Fomentando transporte sostenible y accesible.",
+    extraContent: `<h5>Movilidad</h5><p>Fomentando transporte sostenible y accesible.</p>`,
+  },
+  {
+    img: "naturaleza.png",
+    title: "Naturaleza",
+    description: "Protegiendo ecosistemas y biodiversidad.",
+    extraContent: `<h5>Naturaleza</h5><p>Protegiendo ecosistemas y biodiversidad.</p>`,
+  },
+  {
+    img: "residuos.png",
+    title: "Residuos",
+    description: "Reducción, reciclaje y manejo responsable de residuos.",
+    extraContent: `<h5>Residuos</h5><p>Reducción, reciclaje y manejo responsable de residuos.</p>`,
+  },
+  {
+    img: "riesgos.png",
+    title: "Riesgos",
+    description: "Prevención y gestión de riesgos ambientales.",
+    extraContent: `<h5>Riesgos</h5><p>Prevención y gestión de riesgos ambientales.</p>`,
+  },
+];
+---
+
+<div class="flex flex-wrap gap-8 justify-center">
+  {
+    soluciones.map((sol) => (
+      <Solucion
+        img={sol.img}
+        title={sol.title}
+        description={sol.description}
+        extraContent={sol.extraContent}
+      />
+    ))
+  }
+</div>
