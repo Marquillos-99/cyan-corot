@@ -40,7 +40,8 @@ const { img, title, description, extraContent } = Astro.props;
       class="infocard-flip__back absolute w-full h-full bg-gray-50 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)]"
     >
       <div
-        class="w-full text-gray-700 text-center text-base infocard-back-content"
+        class="w-full text-gray-700 text-center text-base infocard-back-content overflow-y-auto"
+        style="max-height: 15rem;"
         set:html={extraContent}
       />
       <div class="infocard__arrow mt-4">
@@ -61,62 +62,63 @@ const { img, title, description, extraContent } = Astro.props;
       </div>
     </div>
   </div>
-</div>
-<style scoped>
-  .infocard-flip {
-    perspective: 1200px;
-  }
-  .infocard-flip__inner {
-    transition: transform 0.5s;
-  }
-  .infocard-flip.flipped .infocard-flip__inner {
-    transform: rotateY(180deg);
-  }
-  .infocard-flip__front,
-  .infocard-flip__back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-  }
-  .infocard-flip__back {
-    transform: rotateY(180deg);
-  }
-  .infocard-back-content h5 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #2563eb;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.01em;
-  }
-  .infocard-back-content p {
-    font-size: 1rem;
-    color: #374151;
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-  }
-</style>
-<script is:inline>
-  if (!window._cyanFlipHandler) {
-    window._cyanFlipHandler = true;
-    let lastFlippedId = null;
-    window.toggleFlip = function (cardEl) {
-      const cardId = cardEl.id;
-      if (lastFlippedId && lastFlippedId !== cardId) {
-        const lastCard = document.getElementById(lastFlippedId);
-        if (lastCard) {
-          lastCard.classList.remove("flipped");
+
+  <style scoped>
+    .infocard-flip {
+      perspective: 1200px;
+    }
+    .infocard-flip__inner {
+      transition: transform 0.5s;
+    }
+    .infocard-flip.flipped .infocard-flip__inner {
+      transform: rotateY(180deg);
+    }
+    .infocard-flip__front,
+    .infocard-flip__back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+    }
+    .infocard-flip__back {
+      transform: rotateY(180deg);
+    }
+    .infocard-back-content h5 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+    .infocard-back-content p {
+      font-size: 1rem;
+      color: #374151;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+  </style>
+  <script is:inline>
+    if (!window._cyanFlipHandler) {
+      window._cyanFlipHandler = true;
+      let lastFlippedId = null;
+      window.toggleFlip = function (cardEl) {
+        const cardId = cardEl.id;
+        if (lastFlippedId && lastFlippedId !== cardId) {
+          const lastCard = document.getElementById(lastFlippedId);
+          if (lastCard) {
+            lastCard.classList.remove("flipped");
+          }
         }
-      }
-      if (cardEl.classList.contains("flipped")) {
-        cardEl.classList.remove("flipped");
-        lastFlippedId = null;
-      } else {
-        cardEl.classList.add("flipped");
-        lastFlippedId = cardId;
-      }
-    };
-  }
-</script>
+        if (cardEl.classList.contains("flipped")) {
+          cardEl.classList.remove("flipped");
+          lastFlippedId = null;
+        } else {
+          cardEl.classList.add("flipped");
+          lastFlippedId = cardId;
+        }
+      };
+    }
+  </script>
+</div>
