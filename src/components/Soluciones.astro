@@ -5,8 +5,8 @@ const soluciones = [
   {
     img: "agua.png",
     title: "Agua",
-    description: "Gestión sustentable del agua:",
-    extraContent: `<h5>Gestión sustentable del agua:</h5><p>El cambio climático tiene impacto en la disponibilidad del agua en la Ciudad. A partir de la recuperación de los ríos y cuerpos de agua y de la modernización de la infraestructura hídrica, avanzamos en mejorar la gestión de los recursos vitales y garantizar un acceso equitativo al agua para todas las personas.</p>`,
+    description: "Gestión sustentable del agua",
+    extraContent: `<h5>Gestión sustentable del agua</h5><p>El cambio climático tiene impacto en la disponibilidad del agua en la Ciudad. A partir de la recuperación de los ríos y cuerpos de agua y de la modernización de la infraestructura hídrica, avanzamos en mejorar la gestión de los recursos vitales y garantizar un acceso equitativo al agua para todas las personas.</p>`,
   },
   {
     img: "calidad_del_aire.png",
@@ -60,7 +60,7 @@ const soluciones = [
 ];
 ---
 
-<div class="flex flex-wrap gap-8 justify-center">
+<div id="soluciones" class="flex flex-wrap gap-8 justify-center">
   {
     soluciones.map((sol) => (
       <Solucion

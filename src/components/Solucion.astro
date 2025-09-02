@@ -63,7 +63,7 @@ const { img, title, description, extraContent } = Astro.props;
     </div>
   </div>
 
-  <style scoped>
+  <style>
     .infocard-flip {
       perspective: 1200px;
     }
@@ -85,14 +85,16 @@ const { img, title, description, extraContent } = Astro.props;
     .infocard-flip__back {
       transform: rotateY(180deg);
     }
-    .infocard-back-content h5 {
+
+    /* Estilos GLOBALES para el contenido dinámico */
+    :global(.infocard-back-content h5) {
       font-size: 1.25rem;
       font-weight: 700;
       color: #2563eb;
       margin-bottom: 0.5rem;
       letter-spacing: 0.01em;
     }
-    .infocard-back-content p {
+    :global(.infocard-back-content p) {
       font-size: 1rem;
       color: #374151;
       margin-bottom: 0.5rem;
