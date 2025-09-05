@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .hero-bg {
-	background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/0B5345/ffffff?text=Acci%C3%B3n+Clim%C3%A1tica+Global');
+	background-image: linear-gradient(to bottom, rgba(5, 46, 22, 0.96), rgba(16, 185, 129, 0.96)); /* emerald-500 to emerald-900, más opaco */
 	background-size: cover;
 	background-position: center;
 }
